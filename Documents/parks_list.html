@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+  <style media="screen">
+    #works {
+      background-color: rgb(220, 222, 220);
+    }
+  </style>
+
+	<body>
+
+    <iframe src="header.html" width="1400" height="150"></iframe>
+    <br>
+
+    <form action="parks_list.html" method="post">
+      <input type="text" name="searchBox" required>
+      <input type="submit" name="submitSearch">
+    </form>
+
+    <br><br>
+
+    <form action="parks_list.html" method="post">
+      <input type="checkbox" name="province[]" id = "bc" value="British Columbia">
+      <label for="bc">British Columbia</label>
+
+      <input type="checkbox" name="province[]" id = "ab" value="Alberta">
+      <label for="ab">Alberta</label>
+
+      <input type="checkbox" name="province[]" id = "sk" value="Saskatchewan">
+      <label for="sk">Saskatchewan</label>
+
+      <input type="checkbox" name="province[]" id = "mb" value="Manitoba">
+      <label for="mb">Manitoba</label>
+
+      <input type="checkbox" name="province[]" id = "on" value="Ontario">
+      <label for="on">Ontario</label><br>
+
+      <input type="checkbox" name="province[]" id = "qc" value="Quebec">
+      <label for="qc">Quebec</label>
+
+      <input type="checkbox" name="province[]" id = "nb" value="New Brunswick">
+      <label for="nb">New Brunswick</label>
+
+      <input type="checkbox" name="province[]" id = "ns" value="Nova Scotia">
+      <label for="ns">Nova Scotia</label>
+
+      <input type="checkbox" name="province[]" id = "pei" value="Prince Edward Island">
+      <label for="pei">Prince Edward Island</label><br>
+
+      <input type="checkbox" name="province[]" id = "nl" value="Newfoundland and Labrador">
+      <label for="nl">Newfoundland and Labrador</label>
+
+      <input type="checkbox" name="province[]" id = "yt" value="Yukon">
+      <label for="yt">Yukon</label>
+
+      <input type="checkbox" name="province[]" id = "nt" value="Northwest Territories">
+      <label for="nt">Northwest Territories</label>
+
+      <input type="checkbox" name="province[]" id = "nu" value="Nunavut">
+      <label for="nu">Nunavut</label><br>
+
+      <input type="submit" name="filterResults">
+    </form>
+
+		<?php
+      require "load_parks.php";
+		?>
+
+	</body>
+</html>
