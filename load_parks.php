@@ -1,4 +1,26 @@
 <?php
+
+	//FIGURE OUT WHAT DATA TO DISPLAY --------------------------------------------
+
+	//searches
+	if (isset($_POST["searchBox"])) {
+		$sql = "SELECT name, province FROM parks_list WHERE name LIKE '%" . $_POST["searchBox"] . "%'";
+	}
+
+	//filters
+	else if (isset($_POST["province"])) {
+		$filterResults = $_POST["province"];
+		$stringSelected = implode("','", $filterResults);
+		$sql = "SELECT name, province FROM parks_list WHERE province IN ('$stringSelected')";
+	}
+
+	//all data
+	else {
+		$sql = "SELECT name, province FROM parks_list";
+	}
+
+	//DISPLAY DATA ---------------------------------------------------------------
+
 	$servername = "localhost";
 	$username = "root";
 	$password = "1ntr@Net?cpstN";
@@ -13,7 +35,7 @@
 	}
 	echo "<br><br>Connected successfully <br><br>";
 
-	$sql = "SELECT name, province FROM parks_list";
+
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
