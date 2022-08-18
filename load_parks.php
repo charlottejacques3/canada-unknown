@@ -4,9 +4,11 @@
 
 
 	$mainUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+	if ($mainUrl == "/parks_list.html") $whichPage = 1;
+	else if ($mainUrl == "/park_page.html") $whichPage = 2;
 
 	//main list
-	if ($mainUrl == "/parks_list.html") {
+	if ($whichPage == 1) {
 
 		//searches
 		if (isset($_POST["searchBox"])) {
@@ -21,13 +23,11 @@
 		}
 
 		//all data
-		else {
-			$sql = "SELECT id, name, province FROM parks_list";
-		}
+		else $sql = "SELECT id, name, province FROM parks_list";
 	}
 
 	//individual list
-	else if ($mainUrl == "/park_page.html") {
+	else if ($whichPage == 2) {
 		$queryUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
 	  sscanf($queryUrl, "parkid=%d", $id);
 	  $sql = "SELECT id, name, province FROM parks_list WHERE id = " . $id;
@@ -54,34 +54,28 @@
 
 	if ($result->num_rows > 0) {
 
-		//main list
-		if ($mainUrl == "/parks_list.html") {
-			echo "<table> <tbody>";
+		if ($whichPage == 1) echo "<table> <tbody>";
 
 			//output data of each row
 			while ($row = $result->fetch_assoc()) {
 
-				$divId = "works";
-				$id = $row["id"];
-				echo "<tr id = '" . $divId . "'>"
-				. "<th> <a href = 'park_page.html?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
-				. $row["province"]
-				. "</th> </tr> <tr>"
-				. $row["id"] . "</tr>";
+				if ($whichPage == 1) {
+					$divId = "works";
+					$id = $row["id"];
+					echo "<tr id = '" . $divId . "'>"
+					. "<th> <a href = 'park_page.html?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
+					. $row["province"]
+					. "</th> </tr> <tr>"
+					. $row["id"] . "</tr>";
+				}
+
+				else if ($whichPage == 2) {
+					echo "<h2>" . $row["name"] . "</h2>"
+					. $row["province"];
+				}
 			}
 
-			echo "</tbody> </table>";
-		}
-
-		//individual page
-		else if ($mainUrl == "/park_page.html") {
-			while ($row = $result->fetch_assoc()) {
-
-	      echo "<h2>" . $row["name"] . "</h2>"
-				. $row["province"];
-
-	    }
-		}
+			if ($whichPage == 1) echo "</tbody> </table>";
 
 	} else {
 		echo "0 results";
