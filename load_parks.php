@@ -65,8 +65,7 @@
 					echo "<tr id = '" . $divId . "'>"
 					. "<th> <a href = 'park_page.html?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
 					. $row["province"]
-					. "</th> </tr> <tr>"
-					. $row["id"] . "</tr>";
+					. "</th> </tr>";
 				}
 
 				else if ($whichPage == 2) {
