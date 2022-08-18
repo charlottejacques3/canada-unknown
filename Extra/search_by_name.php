@@ -14,8 +14,6 @@
   }
   echo "Search results start here <br><br>";
 
-  $sql = "SELECT id, name, province FROM parks_list WHERE name LIKE '%" . $_POST["searchBox"] . "%'";
-
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
