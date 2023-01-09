@@ -17,11 +17,19 @@
       #popup {
         width: 60vw;
         height: 70vh;
-        z-index: 1;
-        position: fixed;
         top: 15vh;
         left: 20vw;
         background-color: white;
+        z-index: 1;
+        position: fixed;
+      }
+
+      #generator {
+      }
+
+      #header {
+        width: 98vw;
+        height: 150px;
       }
 
     </style>
@@ -29,7 +37,7 @@
 
 	<body>
 
-    <iframe src="header.html" width="1400" height="150"></iframe>
+    <iframe id = "header" src="header.html"></iframe>
     <br>
 
     <form action="parks_list.html" method="post">
@@ -97,16 +105,7 @@
       require "load_parks_list.php";
 		?>
 
-    <script type="text/javascript">
-      var generator = document.getElementById("generator");
-      generator.style.display = "none";
-
-      var button = document.getElementById("generatorButton");
-      var showPopUp = function() {
-        generator.style.display = "block";
-      };
-      button.addEventListener("click", showPopUp);
-    </script>
+    <script src = "generator_buttons.js"></script>
 
 	</body>
 </html>
