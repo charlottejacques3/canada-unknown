@@ -24,7 +24,11 @@
         position: fixed;
       }
 
-      #generator {
+      #closeGenerator {
+        position: fixed;
+        top: calc(15vh + 15px);
+        right: calc(20vw + 15px);
+        z-index: 2;
       }
 
       #header {
@@ -99,13 +103,31 @@
 
     <div id = "generator">
       <iframe id = "popup" src="park_generator.html"></iframe>
+      <button type="close" name="close" id = "closeGenerator">X</button>
     </div>
 
     <?php
       require "load_parks_list.php";
 		?>
 
-    <script src = "generator_buttons.js"></script>
+    <script type="text/javascript">
+      var generator = document.getElementById("generator");
+      generator.style.display = "none";
+
+      var openGenerator = document.getElementById("generatorButton");
+      var closeGenerator = document.getElementById("closeGenerator");
+
+      var showPopUp = function() {
+        generator.style.display = "block";
+      };
+
+      var hidePopUp = function() {
+        generator.style.display = "none";
+      }
+
+      openGenerator.addEventListener("click", showPopUp);
+      closeGenerator.addEventListener("click", hidePopUp);
+    </script>
 
 	</body>
 </html>

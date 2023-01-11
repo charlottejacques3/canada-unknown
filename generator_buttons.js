@@ -3,7 +3,6 @@ generator.style.display = "none";
 
 var openGenerator = document.getElementById("generatorButton");
 var closeGenerator = document.getElementById("close");
-openGenerator.innerHTML = "hello";
 
 var showPopUp = function() {
   generator.style.display = "block";
