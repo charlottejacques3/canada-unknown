@@ -1,0 +1,14 @@
+body {
+    background: rgba(0, 0, 255, 1);
+}
+
+.options {
+    display: block !important;
+}
+
+#optionDiv {
+    display: block;
+    text-align: center;
+    position: absolute;
+    top: 25vh;
+}

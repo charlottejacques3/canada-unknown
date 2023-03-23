@@ -1,0 +1,34 @@
+/* filters and search */
+
+.forms {
+    display: inline-block;
+}
+
+.filters {
+    position: absolute;
+    right: 2vw;
+    margin-top: 0px;
+}
+
+
+/* map-list layout */
+
+.mapList {
+    display: inline-block !important;
+}
+
+#map {
+    display: inline-block !important;
+    width: calc(95vw - 400px);
+    height: 75vh;
+  }
+
+#list { /*list iframe*/
+    width: 400px;
+    height: 75vh;
+    vertical-align: top;
+}
+
+#mobileButtons {
+    display: none;
+}

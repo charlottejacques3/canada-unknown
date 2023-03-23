@@ -1,0 +1,13 @@
+.options{
+    display: inline !important;
+}
+
+#menuIcon {
+    display: none !important;
+}
+
+#wholeMenu {
+    position: absolute !important;
+    right: 2.5em !important;
+    top: 3em !important;
+}

@@ -1,6 +1,6 @@
 <?php
   function generateQualities($column, $table) {
-    require "connect_db.php";
+    require "connect_db_localhost.php";
 
     //calculate the number of rows in the table
     $findRows = "SELECT id FROM $table";
