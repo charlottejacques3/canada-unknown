@@ -5,16 +5,16 @@
     <meta charset='utf-8' />
     <title>Discover Parks</title>
     <style>
-      
+
       #generator { /*park generator iframe and close button*/
         display: none;
       }
 
       #popup { /*park generator iframe*/
-        width: 60vw;
-        height: 70vh;
-        top: 15vh;
-        left: 20vw;
+        width: 60%;
+        height: 70%;
+        top: 15%;
+        left: 20%;
         background-color: white;
         z-index: 1;
         position: fixed;
@@ -22,27 +22,27 @@
 
       #closeGenerator { /*park generator close button*/
         position: fixed;
-        top: calc(15vh + 15px);
-        right: calc(20vw + 15px);
+        top: calc(15% + 15px);
+        right: calc(20% + 15px);
         z-index: 2;
       }
 
       #header {
-        width: 100vw;
-        height: 150px;
+        width: 100%;
+        height: 75px;
       }
 
       #menu {
         position: absolute;
         top: 0px;
         right: 0px;
-        width: 100vw;
-        height: 150px;
+        width: 100%;
+        height: 75px;
       }
 
       #search {
         position: absolute;
-        left: 2vw;
+        left: 2%;
       }
 
       #filterForm { /*filter details*/
@@ -54,7 +54,7 @@
       }
 
       #margin { /*margin between filters and map*/
-        width: 50vw;
+        width: 50%;
         display: none;
       }
     </style>
@@ -145,13 +145,16 @@
 
         //park generator
         var generator = document.getElementById("generator");
+        var frame = document.getElementById("popup");
+        var form = frame.contentWindow.document.getElementById("test");
 
         var openGenerator = document.getElementById("generatorButton");
         var closeGenerator = document.getElementById("closeGenerator");
 
         var showPopUp = function() {
           generator.style.display = "block";
-        };
+          form.style.color = "blue";
+        }
 
         var hidePopUp = function() {
           generator.style.display = "none";

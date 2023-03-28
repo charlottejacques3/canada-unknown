@@ -1,5 +1,6 @@
 .options{
     display: inline !important;
+    
 }
 
 #menuIcon {
@@ -9,5 +10,5 @@
 #wholeMenu {
     position: absolute !important;
     right: 2.5em !important;
-    top: 3em !important;
+    top: 1em !important;
 }

@@ -38,7 +38,7 @@
     $conn->close();
   }
 
-  echo "<form action = 'generate_results.php' method = 'post'>";
+  echo "<form action = 'generate_results.php' method = 'post' id = 'form'>";
   generateQualities("province", "list");
   generateQualities("activity_name", "activities");
   generateQualities("feature_name", "features");

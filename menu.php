@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Poppins&display=swap" rel="stylesheet">
 <style media="screen">
+
+  #optionDiv {
+    font-family: 'Poppins', 'Geneva', sans-serif;
+  }
 
   /*menu button animation*/
   .bar1, .bar2, .bar3 {
@@ -23,7 +31,7 @@
   #menuIcon {
     position: absolute;
     right: 2.5em;
-    top: 3em;
+    top: 1.5em;
   }
 
   div {
@@ -36,7 +44,7 @@
   }
 
   .options {
-    text-align: center;
+    text-align: left;
   }
 </style>
 <link rel = "stylesheet" type = "text/css" id = "style"></link>
@@ -57,7 +65,7 @@
 
       var resize = function() {
         var w = window.innerWidth;
-        console.log(w);
+        console.log('Width' + w);
 
         //decide whether or not it should show the full menu based on the window size
         // if (w > 600) {
@@ -86,6 +94,7 @@
       }
 
       var showMenu = function() {
+
         //toggle between menu and x symbol
         // x.classList.toggle("change");
         //toggle between showing and hiding menu
@@ -97,9 +106,10 @@
             options[i].style.display = "block";
           }
           for(var i = 0; i < body.length; i++) {
-            body[i].style.background = "rgba(0, 0, 255, 1)";
+            body[i].style.background = "rgba(223, 237, 221, 1)";
           }
-          parent.document.getElementById("menu").style.height = "100vh"; //set height to 100%
+          parent.document.getElementById("menu").style.height = "100%"; //set height to 100%
+          console.log('xx:'+parent.document.getElementById("menu").style.width);
           parentPage[0].style.overflow = "hidden"; //prevent overflow
 
           //hide search + filters
@@ -107,9 +117,10 @@
           parent.document.getElementById("filterButton").style.display = "none";
 
           //alignment of menu text
-          optionDiv.style.textAlign = "center";
+          optionDiv.style.textAlign = "left";
           optionDiv.style.position = "absolute";
-          optionDiv.style.top = "25vh";
+          optionDiv.style.top = "25%";
+          optionDiv.style.fontSize = "50px";
 
 
         } else {
@@ -122,17 +133,19 @@
       }
 
       var backToNormal = function() {
+        console.log('Width2:' + window.innerWidth);
         console.log("we going back to normal!");
         for(var i = 0; i < body.length; i++) {
-            body[i].style.background = "rgba(0, 0, 255, 0)";
+            body[i].style.background = "rgba(223, 237, 221, 0)";
           }
-          parent.document.getElementById("menu").style.height = "150px"; //set back to original height
-          parent.document.getElementById("menu").style.width = "100vw";
+          parent.document.getElementById("menu").style.height = "75px"; //set back to original height
+          parent.document.getElementById("menu").style.width = "100%";
           parentPage[0].style.overflow = "auto"; //reset scrollbars
 
           //show search + filters
           parent.document.getElementById("search").style.display = "block";
           parent.document.getElementById("filterButton").style.display = "block";
+          console.log('Width3:' + window.innerWidth);
       }
 
       var body = document.getElementsByTagName("body");
@@ -142,7 +155,6 @@
       
       var sheet = document.getElementById("style");
       var parentPage = parent.document.getElementsByTagName("body");
-
       resize();
 
       //if menu button clicked

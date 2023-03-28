@@ -6,7 +6,7 @@
 
 .filters {
     position: absolute;
-    right: 2vw;
+    right: 2%;
     margin-top: 0px;
 }
 
@@ -19,7 +19,8 @@
 
 #map {
     display: inline-block !important;
-    width: calc(95vw - 400px);
+    /* width: 400px; */
+    width: calc(100vw - 475px);
     height: 75vh;
   }
 
