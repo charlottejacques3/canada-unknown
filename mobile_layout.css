@@ -28,7 +28,14 @@
     width: 95vw;
 }
 
-#mapButton {
-    background-color: white;
+#listButton {
+    background-color: rgb(223, 237, 221);
+    color: black;
 }
+
+#mapButton {
+    background-color: rgb(28, 84, 48);
+}
+
+
 

@@ -26,15 +26,15 @@
 
   if ($result->num_rows > 0) {
 
-    echo "<table class = 'mapList'> <tbody>";
+    echo "<table id = 'works'><tbody>";// class = 'mapList'> <tbody>";
 
       //output data of each row
       while ($row = $result->fetch_assoc()) {
         $id = $row["id"];
-        echo "<tr id = 'works'>"
-        . "<th> <a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
+        echo "<tr><td>"//"<tr id = 'works'>"
+        . "<a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
         . $row["province"]
-        . "</th> </tr>";
+        . "<td></tr>";
       }
 
       //extra rows testing

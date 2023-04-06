@@ -21,9 +21,10 @@
       echo
       "<div id = 'headingImage' style = 'background-image: url(\"" . $row["title_image"] . "\")'>" //background image
       . "<h1>" . $row["name"] . "</h1>" //park title
-      . "<p>" . $row["province"] . "</p></div>"
+      . "<p>" . $row["province"] . "</p> </div>"
       . "<div id = 'main'>" //main body div
-      . "<br><br><h2>What It's Known For</h2>"
+      . "<a href = '". $row["title_image"] . "' class = 'caption' id = 'titleCaption'>Source</a>"
+      . "<br><h2>What It's Known For</h2>"
       . $row["known_for"]
       . "<br><h2>Activities</h2>";
     }
@@ -44,8 +45,8 @@
 
       echo
       "<br><h2>How To Get There</h2>"
-      . "Accessibility Level: "
-      . $row["accessibility"] . "<br>"
+      . "<b>Accessibility Level: "
+      . $row["accessibility"] . "</b><br>"
       . $row["getting_there"]
       . "<br><br><h2>Camping/Accommodations</h2>"
       . $row["camping"]

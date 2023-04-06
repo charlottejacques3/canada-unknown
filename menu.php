@@ -46,6 +46,16 @@
   .options {
     text-align: left;
   }
+
+  a:link, a:visited {
+    text-decoration: none;
+    color: black;
+  }      
+      
+  a:hover, a:active {
+    text-decoration: underline;
+    color: black;
+  }
 </style>
 <link rel = "stylesheet" type = "text/css" id = "style"></link>
   <body onresize = "resize()">
@@ -67,17 +77,6 @@
         var w = window.innerWidth;
         console.log('Width' + w);
 
-        //decide whether or not it should show the full menu based on the window size
-        // if (w > 600) {
-        //   for(var i = 0; i < options.length; i++) {
-        //     options[i].style.display = "inline";
-        //   }
-        //   menuIcon.style.display = "none";
-
-        //   //alignment of menu
-        //   whole.style.right = "2.5em";
-        //   whole.style.top = "3em";
-        // }
         if (w > 600) {
           backToNormal();
         }
@@ -112,10 +111,6 @@
           console.log('xx:'+parent.document.getElementById("menu").style.width);
           parentPage[0].style.overflow = "hidden"; //prevent overflow
 
-          //hide search + filters
-          parent.document.getElementById("search").style.display = "none";
-          parent.document.getElementById("filterButton").style.display = "none";
-
           //alignment of menu text
           optionDiv.style.textAlign = "left";
           optionDiv.style.position = "absolute";
@@ -142,10 +137,8 @@
           parent.document.getElementById("menu").style.width = "100%";
           parentPage[0].style.overflow = "auto"; //reset scrollbars
 
-          //show search + filters
-          parent.document.getElementById("search").style.display = "block";
-          parent.document.getElementById("filterButton").style.display = "block";
-          console.log('Width3:' + window.innerWidth);
+          //regular text
+          optionDiv.style.fontSize = "16px";
       }
 
       var body = document.getElementsByTagName("body");

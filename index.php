@@ -5,14 +5,15 @@
 
     #header {
       width: 98vw;
-      height: 150px;
+      height: 75px;
     }
 
     #menu {
       position: absolute;
-      top: 0px;
-      width: 100vw;
-      height: 100vh;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        height: 75px;
     }
   </style>
 

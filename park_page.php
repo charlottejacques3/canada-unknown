@@ -11,12 +11,22 @@
 
     body {
       font-family: 'Noto Sans JP';
+      font-size: 16px;
       font-weight: 300;
     }
 
     #header {
       width: 98vw;
-      height: 150px;
+      height: 75px;
+    }
+
+    #menu {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      width: 100%;
+      height: 75px;
+      z-index: 2;
     }
 
     #headingImage {
@@ -34,23 +44,54 @@
     #headingImage p {
       position: relative;
       margin-left: 15px;
+      z-index: 1;
     }
-
+  
     h1, h2 {
       font-family: 'Poppins';
     }
 
     #main {
       margin-bottom: 100px;
-      margin-right: calc(100vw/ 50);
-      margin-left: calc(100vw/ 50);
+      margin-right: calc(100vw / 50);
+      margin-left: calc(100vw / 50);
+      text-align: left;
+    }
+
+    img {
+      width: 460px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .caption {
+      font-size: 12px;
+      color: gray;
+      margin-top: -3px;
+      margin-bottom: 10px;
+      width: 460px;
+      position: relative;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .caption a {
+      position: absolute;
+      right: 0px;
+    }
+
+    .caption, #titleCaption {
+      width: 100%;
+      text-align: right;
     }
   </style>
 
   <body>
 
-    <iframe id = "header" src = "header.php"></iframe>
-    <br>
+    <iframe id = "header" src="header.php" frameBorder = "0"></iframe>
+    <iframe id = "menu" src = "menu.php" frameBorder = "0"></iframe>
 
     <?php
       require "load_park_page.php";

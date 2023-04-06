@@ -1,5 +1,37 @@
 <?php
 
+  echo "
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Poppins&display=swap' rel='stylesheet'>
+
+  <style>
+
+    body {
+      margin: 20px;
+    }
+    a:link, a:visited {
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover, a:active {
+      text-decoration: underline;
+      color: black;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    h2, h3 {
+      font-family: 'Poppins';
+    }
+
+  </style>";
+
+  echo "<h2>Recommended Parks</h2>";
+
   $interests = $_POST["selectedQualities"];
   $stringSelected = implode("','", $interests);
 
@@ -15,7 +47,7 @@
       while ($row = $result->fetch_assoc()) {
         $ids[] = $row[$idType];
       }
-    } else echo "0 results";
+    } //else echo "0 results";
 
     $conn->close();
     return $ids;
@@ -26,7 +58,6 @@
   $activityIds = matchingIds("activity_name", "activities", "park_id", $stringSelected);
   $featureIds = matchingIds("feature_name", "features", "park_id", $stringSelected);
   $allIds = array_merge($provIds, $activityIds, $featureIds);
-  echo "The matching id's are " . implode(", ", $allIds);
 
   //sort the ids by how frequently they appear
   $countValues = array_count_values($allIds);
@@ -47,7 +78,13 @@
 
     if ($tagList->num_rows > 0) {
       while($row = $tagList->fetch_assoc()) {
-        $tagsArray[] = "<span style = 'background: rgb(172, 198, 232); margin: 3px;'>" . $row[$column] . "</span>";
+        $tagsArray[] = "<span style = '
+        background: rgb(172, 198, 232); 
+        margin: 3px; 
+        font-family: Noto Sans JP; 
+        border-radius: 4px;
+        padding: 1px 4px
+        '>" . $row[$column] . "</span>";
       }
     }
     return implode(" ", $tagsArray);
@@ -64,10 +101,8 @@
           . tags("activity_name", "activities", "park_id", $activityIds, $id, $stringSelected)
           . tags("feature_name", "features", "park_id", $featureIds, $id, $stringSelected);
 
-        echo "<tr style = 'background: rgb(220, 222, 220);'>"
-        . "<th> <a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
-        . $row["province"]
-        . "<br>"
+        echo "<tr style = 'background: rgb(223, 237, 221);'>"
+        . "<th> <a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3 style = 'font-family: Poppins'>" . $row["name"]. "</h3></a>"
         . $tags;
         echo "</th> </tr>";
       }
