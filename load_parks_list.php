@@ -2,7 +2,7 @@
 
   //CONNECT TO DATABASE + FIGURE OUT WHAT DATA TO DISPLAY ----------------------
 
-  require "connect_db_localhost.php";
+  require "connect_db.php";
 
   //searches
   if (isset($_POST["searchBox"])) {
@@ -26,20 +26,15 @@
 
   if ($result->num_rows > 0) {
 
-    echo "<table id = 'works'><tbody>";// class = 'mapList'> <tbody>";
+    echo "<table id = 'works'><tbody>";
 
       //output data of each row
       while ($row = $result->fetch_assoc()) {
         $id = $row["id"];
-        echo "<tr><td>"//"<tr id = 'works'>"
-        . "<a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3>" . $row["name"]. "</h3></a>"
-        . $row["province"]
+        echo "<tr><td>"
+        . "<a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3 class = 'name'>" . $row["name"]. "</h3></a>"
+        . "<span class = 'province'>" . $row["province"] . "</span>"
         . "<td></tr>";
-      }
-
-      //extra rows testing
-      for($i = 0; $i < 10; $i++) {
-        echo "<tr id = 'works'><th><h3>Sample Park " . $i . "</h3></th> </tr>";
       }
 
       echo "</tbody> </table>";

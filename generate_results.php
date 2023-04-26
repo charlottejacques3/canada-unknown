@@ -9,6 +9,7 @@
 
     body {
       margin: 20px;
+      -webkit-text-size-adjust: 100%;
     }
     a:link, a:visited {
       color: black;
@@ -37,7 +38,7 @@
 
   //figure out which parks have the right features
   function matchingIds($column, $table, $idType, $string) {
-    require "connect_db_localhost.php";
+    require "connect_db.php";
 
     $sql = "SELECT $column, $idType FROM $table WHERE $column IN ('$string')";
     $ids = array();
@@ -47,7 +48,7 @@
       while ($row = $result->fetch_assoc()) {
         $ids[] = $row[$idType];
       }
-    } //else echo "0 results";
+    }
 
     $conn->close();
     return $ids;
@@ -64,21 +65,21 @@
   arsort($countValues);
   $sortedIds = array_keys($countValues);
   $orderQuery = implode(", ", $sortedIds);
-  //echo "<br>The array id's in order are " . $orderQuery;
 
-  require "connect_db_localhost.php";
+  require "connect_db.php";
   $sql = "SELECT id, name, province FROM list WHERE id IN (" . $orderQuery . ") ORDER BY FIELD (id, " . $orderQuery . ")";
 
   //tags function
   function tags($column, $table, $idType, $selectedIds, $currentId, $string) {
     $tagsArray = array();
-    require "connect_db_localhost.php";
+    require "connect_db.php";
     $request = "SELECT $column FROM $table WHERE $idType LIKE $currentId AND $column IN ('$string')";
     $tagList = $conn->query($request);
 
     if ($tagList->num_rows > 0) {
       while($row = $tagList->fetch_assoc()) {
-        $tagsArray[] = "<span style = '
+        $tagsArray[] = "<span class = 'tags'
+        style = '
         background: rgb(172, 198, 232); 
         margin: 3px; 
         font-family: Noto Sans JP; 
@@ -102,12 +103,43 @@
           . tags("feature_name", "features", "park_id", $featureIds, $id, $stringSelected);
 
         echo "<tr style = 'background: rgb(223, 237, 221);'>"
-        . "<th> <a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3 style = 'font-family: Poppins'>" . $row["name"]. "</h3></a>"
+        . "<th> <a href = 'park_page.php?parkid=" . $id . "' target = '_top'><h3 style = 'font-family: Poppins' class = 'parkName'>" . $row["name"]. "</h3></a>"
         . $tags;
         echo "</th> </tr>";
       }
 
       echo "</tbody> </table>";
   } else echo "0 results";
+
+  //javascript
+  echo 
+  "<script>
+    var heading = document.getElementsByTagName('h2');
+    var parkname = document.getElementsByClassName('parkName');
+    var tags = document.getElementsByClassName('tags');
+
+    if (navigator.userAgent.match(/iPhone/i)  || navigator.userAgent.match(/Android/i)) {
+      for (var i = 0; i < heading.length; i++) {
+        heading[i].style.fontSize = '50px';
+      }
+      for (var i = 0; i < parkname.length; i++) {
+        parkname[i].style.fontSize = '40px';
+      }
+      for (var i = 0; i < tags.length; i++) {
+        tags[i].style.fontSize = '30px';
+      }
+    } else {
+      for (var i = 0; i < heading.length; i++) {
+        heading[i].style.fontSize = '30px';
+      }
+      for (var i = 0; i < parkname.length; i++) {
+        parkname[i].style.fontSize = '20px';
+      }
+      for (var i = 0; i < tags.length; i++) {
+        tags[i].style.fontSize = '16px';
+      }
+    }
+    </script>";
+
   $conn->close();
 ?>

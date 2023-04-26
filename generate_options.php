@@ -1,6 +1,6 @@
 <?php
   function generateQualities($column, $table) {
-    require "connect_db_localhost.php";
+    require "connect_db.php";
 
     //calculate the number of rows in the table
     $findRows = "SELECT id FROM $table";
@@ -31,7 +31,7 @@
     foreach ($optionVals as $v) {
       echo "
       <input type = 'checkbox' name = 'selectedQualities[]' id = '" . $v
-      . "' value = '" . $v . "' <label id = 'label' for '" . $v . "'>"
+      . "' value = '" . $v . "'><label for '" . $v . "'>"
       . $v . "</label><br>";
     }
 

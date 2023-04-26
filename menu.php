@@ -10,22 +10,8 @@
     font-family: 'Poppins', 'Geneva', sans-serif;
   }
 
-  /*menu button animation*/
-  .bar1, .bar2, .bar3 {
-    width: 35px;
-    height: 5px;
+  .bar {
     background-color: black;
-    margin: 6px;
-    /* top: 2.75em; */
-  }
-  .change .bar1 {
-    transform: translate(0, 11px) rotate(-45deg);
-  }
-  .change .bar2 {
-    opacity: 0;
-  }
-  .change .bar3 {
-    transform: translate(0, -11px) rotate(45deg);
   }
 
   #menuIcon {
@@ -61,8 +47,7 @@
   <body onresize = "resize()">
     <ul id = "wholeMenu">
       <li id = "menuIcon" >
-      <!-- onclick = "showMenu(this)"> -->
-        <div class = "bar1"></div><div class = "bar2"></div><div class = "bar3"></div></li>
+        <div class = "bar"></div><div class = "bar"></div><div class = "bar"></div></li>
       <div id = "optionDiv">
       <li class = "options"><a href = "index.php" target = "_top">Home</a></li>
       <li class = "options"><a href = "parks_list.php" target = "_top">Discover Parks</a></li></div>
@@ -75,9 +60,8 @@
 
       var resize = function() {
         var w = window.innerWidth;
-        console.log('Width' + w);
 
-        if (w > 600) {
+        if (w > 600 && !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/Android/i)) {
           backToNormal();
         }
         else if (options[0].style.display != "block") {
@@ -88,18 +72,14 @@
         }
 
         //check which stylesheet to call
-        if (w > 600) sheet.href = "desktop_menu.css";
+        if (w > 600 && !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/Android/i)) sheet.href = "desktop_menu.css";
         else sheet.href = "";
       }
 
       var showMenu = function() {
 
-        //toggle between menu and x symbol
-        // x.classList.toggle("change");
         //toggle between showing and hiding menu
         if(options[0].style.display === "none") {
-
-          // sheet.href = "mobile_menu_clicked.css";
 
           for(var i = 0; i < options.length; i++) {
             options[i].style.display = "block";
@@ -108,14 +88,16 @@
             body[i].style.background = "rgba(223, 237, 221, 1)";
           }
           parent.document.getElementById("menu").style.height = "100%"; //set height to 100%
-          console.log('xx:'+parent.document.getElementById("menu").style.width);
           parentPage[0].style.overflow = "hidden"; //prevent overflow
 
           //alignment of menu text
           optionDiv.style.textAlign = "left";
           optionDiv.style.position = "absolute";
           optionDiv.style.top = "25%";
-          optionDiv.style.fontSize = "50px";
+          if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i))
+            optionDiv.style.fontSize = "100px";
+          else
+            optionDiv.style.fontSize = "50px";
 
 
         } else {
@@ -128,12 +110,15 @@
       }
 
       var backToNormal = function() {
-        console.log('Width2:' + window.innerWidth);
-        console.log("we going back to normal!");
         for(var i = 0; i < body.length; i++) {
             body[i].style.background = "rgba(223, 237, 221, 0)";
           }
-          parent.document.getElementById("menu").style.height = "75px"; //set back to original height
+
+          //set back to original height
+          if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i)) 
+            parent.document.getElementById("menu").style.height = "200px"; 
+          else
+            parent.document.getElementById("menu").style.height = "75px"; 
           parent.document.getElementById("menu").style.width = "100%";
           parentPage[0].style.overflow = "auto"; //reset scrollbars
 
@@ -152,6 +137,24 @@
 
       //if menu button clicked
       menuIcon.addEventListener("click", showMenu);
+
+
+      //header + fontsize differences for desktop and mobile
+      var bar = document.getElementsByClassName("bar");
+
+      if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/Android/i)) {
+        for (var i = 0; i < bar.length; i++) {
+          bar[i].style.width = "90px";
+          bar[i].style.height = "12px";
+          bar[i].style.margin = "15px";
+        }
+      } else {
+        for (var i = 0; i < bar.length; i++) {
+          bar[i].style.width = "35px";
+          bar[i].style.height = "5px";
+          bar[i].style.margin = "6px";
+        }
+      }
     </script>
   </body>
 </html>

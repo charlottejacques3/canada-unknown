@@ -59,5 +59,32 @@
       require "load_parks_list.php";
     ?>
 
+    <script>
+      var parkname = document.getElementsByClassName("name");
+      var province = document.getElementsByClassName("province");
+      var searchBar = document.querySelector('input[type="text"]');
+      var submitButton = document.querySelector('input[type="submit"]');
+
+      if (navigator.userAgent.match(/iPhone/i)  || navigator.userAgent.match(/Android/i)) {
+        for (var i = 0; i < parkname.length; i++) {
+          parkname[i].style.fontSize = "40px";
+        }
+        for (var i = 0; i < province.length; i++) {
+          province[i].style.fontSize = "30px";
+        }
+        searchBar.style.fontSize = "30px";
+        submitButton.style.fontSize = "30px";
+      } else {
+        for (var i = 0; i < parkname.length; i++) {
+          parkname[i].style.fontSize = "20px";
+        }
+        for (var i = 0; i < province.length; i++) {
+          province[i].style.fontSize = "16px";
+        }
+        searchBar.style.fontSize = "16px";
+        submitButton.style.fontSize = "16px";
+      }
+    </script>
+
   </body>
 </html>

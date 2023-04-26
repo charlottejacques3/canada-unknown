@@ -1,14 +1,3 @@
-/* filters and search */
-.forms {
-    display: block;
-}
-
-.filters {
-    position: absolute;
-    left: 2vw;
-    margin-top: 20px;
-}
-
 .mapList {
     display: block;
 }
