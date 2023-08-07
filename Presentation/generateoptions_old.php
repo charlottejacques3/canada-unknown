@@ -29,18 +29,18 @@
 
     //display the data
     foreach ($optionVals as $v) {
-      echo "
+      echo "<br>
       <input type = 'checkbox' name = 'selectedQualities[]' id = '" . $v
-      . "' value = '" . $v . "'><label for '" . $v . "'>"
-      . $v . "</label><br>";
+      . "' value = '" . $v . "' <label for '" . $v . "'>"
+      . $v . "</label>";
     }
 
     $conn->close();
   }
 
-  echo "<form action = 'generate_results.php' method = 'post' id = 'form'>";
+  echo "<form action = 'generateresults_old.php' method = 'post'>";
   generateQualities("province", "list");
   generateQualities("activity_name", "activities");
   generateQualities("feature_name", "features");
-  echo "<br><input type= 'submit' name= 'interests'></form>";
+  echo "<input type= 'submit' name= 'interests'></form>";
 ?>

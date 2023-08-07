@@ -163,6 +163,12 @@
         if (w > 600 && !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/Android/i)) 
           style.href = "desktop_layout.css";
         else style.href = "mobile_layout.css";
+
+
+
+        for(var i = 0; i < 20; i++) {
+          console.log(causeError);
+        }
       }
 
       layout();

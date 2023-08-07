@@ -2,7 +2,7 @@
 
   //CONNECT TO DATABASE + FIGURE OUT WHAT DATA TO DISPLAY ----------------------
 
-  require "connect_db.php";
+  require "connect_db_localhost.php";
 
   //searches
   if (isset($_POST["searchBox"])) {

@@ -1,0 +1,15 @@
+body {
+    background: rgba(223, 237, 221, 1);
+}
+
+.options {
+    display: block !important;
+}
+
+#optionDiv {
+    display: block;
+    text-align: left;
+    position: absolute;
+    top: 25%;
+    font-size: 500px;
+}

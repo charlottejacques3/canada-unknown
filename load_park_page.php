@@ -2,7 +2,7 @@
 
   //CONNECT TO DATABASE + FIGURE OUT WHAT DATA TO DISPLAY ----------------------
 
-  require "connect_db.php";
+  require "connect_db_localhost.php";
 
   $queryUrl = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
   sscanf($queryUrl, "parkid=%d", $id);
